@@ -36,6 +36,12 @@ $route['admin/bai-thi/(:any)/sua'] = 'Admin/BaiThi/update/$1';
 $route['admin/bai-thi/(:any)/xoa'] = 'Admin/BaiThi/delete/$1';
 $route['admin/bai-thi/(:any)/them-cau-hoi'] = 'Admin/BaiThi/addQuestion/$1';
 
+$route['admin/ket-qua'] = 'Admin/KetQua';
+$route['admin/ket-qua/(:any)/trang'] = 'Admin/KetQua/page/$1';
+$route['admin/ket-qua/them'] = 'Admin/KetQua/add';
+$route['admin/ket-qua/(:any)/xoa'] = 'Admin/KetQua/delete/$1';
+$route['admin/ket-qua/(:any)/cham-diem'] = 'Admin/KetQua/scoring/$1';
+
 $route['bai-hoc'] = 'Student/BaiHoc/index';
 $route['bai-hoc/(:any)/trang'] = 'Student/BaiHoc/page/$1';
 $route['bai-hoc/(:any)'] = 'Student/BaiHoc/detail/$1';
@@ -54,3 +60,4 @@ $route['ca-nhan'] = 'Student/HocSinh';
 
 $route['xem-ket-qua'] = 'Student/KetQua/index';
 $route['xem-ket-qua/(:any)/trang'] = 'Student/KetQua/page/$1';
+
