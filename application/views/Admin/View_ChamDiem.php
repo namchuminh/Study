@@ -35,7 +35,7 @@
 					            <dt>Câu <?php echo $i + 1 ?>: <?php echo $list[$i]['TenCauHoi'] ?></dt>
 					            <br>
 					            <dd>
-					            	<textarea class="form-control"><?php echo $list[0]['BaiLam'] ?></textarea>
+					            	<textarea class="form-control"><?php echo $list[$i]['BaiLam'] ?></textarea>
 					            </dd>
 					        </dl>
 				  		<?php endfor ?>
