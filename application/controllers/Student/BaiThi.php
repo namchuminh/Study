@@ -85,14 +85,6 @@ class BaiThi extends CI_Controller {
 				$socaudung = $this->Model_BaiThi->getKetQua($maketqua)[0]['SoCauDung'] + 1;
 				$chamdiem = ($socaudung / $socauthi) * 10;
 				$this->Model_BaiThi->updateKetQua($socaudung,$chamdiem,$maketqua);
-			}else{
-				$socaudung = $this->Model_BaiThi->getKetQua($maketqua)[0]['SoCauDung'];
-				if($this->Model_BaiThi->getKetQua($maketqua)[0]['SoCauDung'] >= 1){
-					$socaudung = $this->Model_BaiThi->getKetQua($maketqua)[0]['SoCauDung'] - 1;
-				}
-
-				$chamdiem = ($socaudung / $socauthi) * 10;
-				$this->Model_BaiThi->updateKetQua($socaudung,$chamdiem,$maketqua);
 			}
 		}else{
 			return;
