@@ -30,13 +30,38 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="justify-content: space-between;">
+    <?php
+      // Load model
+      $CI = &get_instance();
+      $CI->load->model('Admin/Model_TrinhDo');
+
+      // Lấy dữ liệu từ model
+      $trinhdo = $CI->Model_TrinhDo->getAll(0,1000);
+    ?>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+          <a href="<?php echo base_url(); ?>" class="nav-link">Trang Chủ</a>
+      </li>
+      <?php foreach ($trinhdo as $td): ?>
+          <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?php echo base_url(); ?>?lop=<?php echo $td['MaTrinhDo']; ?>" class="nav-link"><?= htmlspecialchars($td['TenTrinhDo']) ?></a>
+          </li>
+      <?php endforeach; ?>
     </ul>
+    <form class="form-inline ml-3 float-right" style="margin-right: 10px;" action="<?php echo base_url(); ?>">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" name="timkiem" type="search" placeholder="Tìm bài thi, bài học" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
     <?php if(isset($_SESSION['hocsinh'])){ ?>
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->

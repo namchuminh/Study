@@ -93,6 +93,14 @@
 	                        <?php } ?>
                         </div>
                       </div>
+
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <?php if($detail[0]['MaBaiThi'] != NULL){ ?>
+                            <a class="btn btn-primary" href="<?php echo base_url('lam-bai-thi/'.$detail[0]['MaBaiThi']); ?>">Làm Bài Thi</a>
+                          <?php } ?>
+                        </div>
+                      </div>
                     </div> 
                 </div>
               </div>

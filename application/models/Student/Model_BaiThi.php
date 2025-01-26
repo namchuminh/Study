@@ -16,6 +16,23 @@ class Model_BaiThi extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getAllHomeSearch($matrinhdo){
+		$sql = "SELECT baithi.*, trinhdo.TenTrinhDo, trinhdo.DuongDan FROM baithi, trinhdo WHERE baithi.TrangThai = 1 AND trinhdo.MaTrinhDo = baithi.MaTrinhDo ORDER BY baithi.Mabaithi AND baithi.MaTrinhDo = ? DESC";
+		$result = $this->db->query($sql, array($matrinhdo));
+		return $result->result_array();
+	}
+
+	public function getAllHomeSearchKey($timkiem) {
+	    $sql = "SELECT baithi.*, trinhdo.TenTrinhDo, trinhdo.DuongDan 
+	            FROM baithi
+	            INNER JOIN trinhdo ON trinhdo.MaTrinhDo = baithi.MaTrinhDo
+	            WHERE baithi.TrangThai = 1 
+	            AND baithi.MaBaiThi LIKE ? 
+	            ORDER BY baithi.Mabaithi DESC";
+	    $result = $this->db->query($sql, array('%' . $timkiem . '%'));
+	    return $result->result_array();
+	}
+
 	public function checkNumber()
 	{
 		$sql = "SELECT baithi.*, trinhdo.TenTrinhDo, trinhdo.DuongDan FROM baithi, trinhdo WHERE baithi.TrangThai = 1 AND trinhdo.MaTrinhDo = baithi.MaTrinhDo";

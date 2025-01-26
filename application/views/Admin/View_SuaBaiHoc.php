@@ -101,7 +101,17 @@
                           </label>
                           <input type="file" class="form-control" id="ten" name="teptin">
                         </div>
-
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="ten">Chọn Bài Thi</label>
+                          <select name="mabaithi" class="form-control" required>
+                            <?php foreach ($baithi as $key => $value2): ?>
+                              <option value="<?php echo $value2['MaBaiThi']; ?>"
+                                <?php echo $detail[0]['MaBaiThi'] == $value2['MaBaiThi'] ? "selected" : "" ?> >Bài Thi Số <?php echo $value2['MaBaiThi']; ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
                       </div>
                     </div> 
                     <a class="btn btn-success" href="<?php echo base_url('admin/bai-hoc/'); ?>">Quay Lại</a>

@@ -93,6 +93,16 @@
                           <input type="file" class="form-control" id="ten" name="teptin">
                         </div>
                       </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="ten">Chọn Bài Thi</label>
+                          <select name="mabaithi" class="form-control" required>
+                            <?php foreach ($baithi as $key => $value2): ?>
+                              <option value="<?php echo $value2['MaBaiThi']; ?>">Bài Thi Số <?php echo $value2['MaBaiThi']; ?></option>
+                            <?php endforeach ?>
+                          </select>
+                        </div>
+                      </div>
                     </div> 
                     <a class="btn btn-success" href="<?php echo base_url('admin/bai-hoc/'); ?>">Quay Lại</a>
                     <button class="btn btn-primary">Thêm Bài Học</button>
@@ -149,5 +159,5 @@
     });
 </script>
 <style type="text/css">
-  .ck-editor__editable {min-height: 382px;}
+  .ck-editor__editable {min-height: 468px;}
 </style>

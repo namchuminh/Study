@@ -62,11 +62,11 @@ class BaiThi extends CI_Controller {
 			$mucdo = $this->input->post('mucdo');
 			$thoigianlam = $this->input->post('thoigianlam');
 			$matrinhdo = $this->input->post('matrinhdo');
-			$loaibaithi = $this->input->post('loaibaithi');
+			$loaibaithi = 2;
 			$socauhoi = $this->input->post('socauhoi');
 
 			$mabaithi = $this->Model_BaiThi->add($matrinhdo,$loaibaithi,$mucdo,$socauhoi,$thoigianlam);
-
+			
 			$this->session->set_flashdata('success', 'Thêm bài thi thành công!');
 			return redirect(base_url('admin/bai-thi/'));
 		}

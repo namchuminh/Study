@@ -38,22 +38,11 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="ten">Loại Bài Thi</label>
-                      <select name="loaibaithi" class="form-control" required>
-                        <option value="1">Trắc Nghiệm</option>
-                        <option value="2">Tự Luận</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
                       <label for="ten">Mức Độ Bài Thi</label>
                       <select name="mucdo" class="form-control" required>
-                        <option value="1">Nhận Biết</option>
-                        <option value="2">Thông Hiểu</option>
-                        <option value="3">Vận Dụng</option>
-                        <option value="4">Vận Dụng Cao</option>
-                        <option value="5">Đẩy Đủ Mức Độ</option>
+                        <option value="1">Dễ</option>
+                        <option value="2">Trung Bình</option>
+                        <option value="3">Khó</option>
                       </select>
                     </div>
                   </div>

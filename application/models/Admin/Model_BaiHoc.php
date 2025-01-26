@@ -10,14 +10,15 @@ class Model_BaiHoc extends CI_Model {
 		
 	}
 
-	public function add($tenbaihoc,$mota,$duongdan,$magiaovien,$loaibaihoc,$matrinhdo){
+	public function add($tenbaihoc,$mota,$duongdan,$magiaovien,$loaibaihoc,$matrinhdo,$mabaithi){
 		$data = array(
 	        "TenBaiHoc" => $tenbaihoc,
 	        "MoTa" => $mota,
 	        "DuongDan" => $duongdan,
 	        "MaGiaoVien" => $magiaovien,
 	        "LoaiBaiHoc" => $loaibaihoc,
-	        "MaTrinhDo" => $matrinhdo
+	        "MaTrinhDo" => $matrinhdo,
+	        "MaBaiThi" => $mabaithi,
 	    );
 
 	    $this->db->insert('baihoc', $data);
@@ -45,9 +46,9 @@ class Model_BaiHoc extends CI_Model {
 		return $result->result_array();
 	}
 
-	public function update($tenbaihoc,$mota,$duongdan,$magiaovien,$loaibaihoc,$matrinhdo,$mabaihoc){
-		$sql = "UPDATE baihoc SET TenBaiHoc = ?, mota = ?, DuongDan =?, MaGiaoVien = ?, LoaiBaiHoc = ?, MaTrinhDo = ? WHERE mabaihoc = ?";
-		$result = $this->db->query($sql, array($tenbaihoc,$mota,$duongdan,$magiaovien,$loaibaihoc,$matrinhdo,$mabaihoc));
+	public function update($tenbaihoc,$mota,$duongdan,$magiaovien,$loaibaihoc,$matrinhdo,$mabaithi,$mabaihoc){
+		$sql = "UPDATE baihoc SET TenBaiHoc = ?, mota = ?, DuongDan =?, MaGiaoVien = ?, LoaiBaiHoc = ?, MaTrinhDo = ?, MaBaiThi = ? WHERE mabaihoc = ?";
+		$result = $this->db->query($sql, array($tenbaihoc,$mota,$duongdan,$magiaovien,$loaibaihoc,$matrinhdo,$mabaithi,$mabaihoc));
 		return $result;
 	}
 
