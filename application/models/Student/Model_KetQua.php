@@ -23,6 +23,13 @@ class Model_KetQua extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getById($maketqua){
+		$sql = "SELECT * FROM ketqua WHERE MaKetQua = ?";
+		$result = $this->db->query($sql, array($maketqua));
+		return $result->result_array();
+	}
+
+
 	public function getLate(){
 		$sql = "SELECT ketqua.*, baithi.MaBaiThi, baithi.SoCauHoi, baithi.MucDo, baithi.LoaiBaiThi FROM ketqua, baithi WHERE ketqua.MaBaiThi = baithi.MaBaiThi AND ketqua.TrangThai = 1 AND DATE(ketqua.ThoiGian) = CURDATE() ORDER BY ketqua.MaKetQua DESC LIMIT 1";
 		$result = $this->db->query($sql);

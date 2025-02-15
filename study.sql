@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2025 at 08:13 PM
+-- Generation Time: Feb 15, 2025 at 07:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -205,7 +205,38 @@ INSERT INTO `ketqua` (`MaKetQua`, `MaHocSinh`, `SoCauDung`, `ChamDiem`, `ThoiGia
 (101, 3, -1, -1, '2024-05-29 16:28:40', 5, 1),
 (102, 2, 0, 0, '2024-11-09 22:29:11', 5, 1),
 (103, 2, 0, 0, '2024-11-09 22:30:32', 6, 1),
-(104, 2, 0, 0, '2024-11-09 22:30:43', 1, 1);
+(104, 2, 0, 0, '2024-11-09 22:30:43', 1, 1),
+(105, 1, 0, 0, '2025-02-16 00:24:16', 7, 1),
+(106, 1, 0, 0, '2025-02-16 00:24:30', 6, 1),
+(107, 1, 2, 6.66667, '2025-02-16 00:24:41', 4, 1),
+(108, 1, 0, 0, '2025-02-16 00:25:54', 1, 1),
+(109, 1, 1, 5, '2025-02-16 00:49:00', 1, 1),
+(110, 1, 0, 0, '2025-02-16 00:49:23', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `traloi`
+--
+
+CREATE TABLE `traloi` (
+  `MaTraLoi` int(11) NOT NULL,
+  `MaKetQua` int(11) NOT NULL,
+  `MaCauHoi` int(11) NOT NULL,
+  `DapAnDung` varchar(255) NOT NULL,
+  `DapAnChon` varchar(255) NOT NULL,
+  `TrangThai` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `traloi`
+--
+
+INSERT INTO `traloi` (`MaTraLoi`, `MaKetQua`, `MaCauHoi`, `DapAnDung`, `DapAnChon`, `TrangThai`) VALUES
+(1, 109, 5, 'B', 'B', 'Đúng'),
+(2, 109, 6, 'C', 'B', 'Sai'),
+(3, 110, 5, 'B', 'C', 'Sai'),
+(4, 110, 6, 'C', 'D', 'Sai');
 
 -- --------------------------------------------------------
 
@@ -305,6 +336,14 @@ ALTER TABLE `ketqua`
   ADD KEY `MaBaiThi` (`MaBaiThi`);
 
 --
+-- Indexes for table `traloi`
+--
+ALTER TABLE `traloi`
+  ADD PRIMARY KEY (`MaTraLoi`),
+  ADD KEY `MaKetQua` (`MaKetQua`,`MaCauHoi`),
+  ADD KEY `MaCauHoi` (`MaCauHoi`);
+
+--
 -- Indexes for table `trinhdo`
 --
 ALTER TABLE `trinhdo`
@@ -356,7 +395,13 @@ ALTER TABLE `hocsinh`
 -- AUTO_INCREMENT for table `ketqua`
 --
 ALTER TABLE `ketqua`
-  MODIFY `MaKetQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `MaKetQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+
+--
+-- AUTO_INCREMENT for table `traloi`
+--
+ALTER TABLE `traloi`
+  MODIFY `MaTraLoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `trinhdo`
@@ -399,6 +444,13 @@ ALTER TABLE `cauhoi`
 ALTER TABLE `ketqua`
   ADD CONSTRAINT `ketqua_ibfk_1` FOREIGN KEY (`MaBaiThi`) REFERENCES `baithi` (`MaBaiThi`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `ketqua_ibfk_2` FOREIGN KEY (`MaHocSinh`) REFERENCES `hocsinh` (`MaHocSinh`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `traloi`
+--
+ALTER TABLE `traloi`
+  ADD CONSTRAINT `traloi_ibfk_1` FOREIGN KEY (`MaKetQua`) REFERENCES `ketqua` (`MaKetQua`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `traloi_ibfk_2` FOREIGN KEY (`MaCauHoi`) REFERENCES `cauhoi` (`MaCauHoi`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tuluan`

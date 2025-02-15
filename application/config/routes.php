@@ -60,4 +60,5 @@ $route['ca-nhan'] = 'Student/HocSinh';
 
 $route['xem-ket-qua'] = 'Student/KetQua/index';
 $route['xem-ket-qua/(:any)/trang'] = 'Student/KetQua/page/$1';
+$route['xem-dap-an/(:any)'] = 'Student/KetQua/result/$1';
 

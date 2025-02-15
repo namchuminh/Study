@@ -78,6 +78,12 @@ class Model_BaiThi extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function checkDapAnDung($macauhoi){
+		$sql = "SELECT * FROM cauhoi WHERE MaCauHoi = ?";
+		$result = $this->db->query($sql, array($macauhoi));
+		return $result->result_array();
+	}
+
 	public function updateKetQua($socaudung,$chamdiem,$maketqua){
 		$sql = "UPDATE ketqua SET SoCauDung = ?, ChamDiem = ? WHERE MaKetQua = ?";
 		$result = $this->db->query($sql, array($socaudung,$chamdiem,$maketqua));
@@ -103,6 +109,33 @@ class Model_BaiThi extends CI_Model {
 
 	    return $lastInsertedId;
 	}
+
+	public function checkTraLoi($maketqua,$macauhoi){
+		$sql = "SELECT * FROM traloi WHERE MaKetQua = ? AND MaCauHoi = ?";
+		$result = $this->db->query($sql, array($maketqua,$macauhoi));
+		return $result->result_array();
+	}	
+
+	public function createTraLoi($maketqua,$macauhoi,$dapandung,$dapanchon,$trangthai){
+		$data = array(
+	        "maketqua" => $maketqua,
+	        "macauhoi" => $macauhoi,
+	        "dapandung" => $dapandung,
+	        "dapanchon" => $dapanchon,
+	        "trangthai" => $trangthai
+	    );
+
+	    $this->db->insert('traloi', $data);
+	    $lastInsertedId = $this->db->insert_id();
+
+	    return $lastInsertedId;
+	}
+
+	public function deleteTraLoi($maketqua,$macauhoi){
+		$sql = "DELETE FROM traloi WHERE MaKetQua = ? AND MaCauHoi = ?";
+		$result = $this->db->query($sql, array($maketqua,$macauhoi));
+		return $result;
+	}	
 }
 
 /* End of file Model_BaiThi.php */

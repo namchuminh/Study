@@ -81,6 +81,24 @@ class BaiThi extends CI_Controller {
 
 			$socauthi = $this->Model_BaiThi->getById($mabaithi)[0]['SoCauHoi'];
 
+			if(count($this->Model_BaiThi->checkTraLoi($maketqua,$macauhoi)) >= 1){
+				$trangthai = "Sai";
+				if(count($this->Model_BaiThi->checkDapAn($macauhoi,$dapan)) >= 1){
+					$trangthai = "Đúng";
+				}
+				$dapandung = $this->Model_BaiThi->checkDapAnDung($macauhoi)[0]['DapAnDung'];
+				$this->Model_BaiThi->createTraLoi($maketqua,$macauhoi,$dapandung,$dapan,$trangthai);
+			}else{
+				$this->Model_BaiThi->deleteTraLoi($maketqua,$macauhoi,$dapandung,$dapan,$trangthai);
+
+				$trangthai = "Sai";
+				if(count($this->Model_BaiThi->checkDapAn($macauhoi,$dapan)) >= 1){
+					$trangthai = "Đúng";
+				}
+				$dapandung = $this->Model_BaiThi->checkDapAnDung($macauhoi)[0]['DapAnDung'];
+				$this->Model_BaiThi->createTraLoi($maketqua,$macauhoi,$dapandung,$dapan,$trangthai);
+			}
+
 			if(count($this->Model_BaiThi->checkDapAn($macauhoi,$dapan)) >= 1){
 				$socaudung = $this->Model_BaiThi->getKetQua($maketqua)[0]['SoCauDung'] + 1;
 				$chamdiem = ($socaudung / $socauthi) * 10;

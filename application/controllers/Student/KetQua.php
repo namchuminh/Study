@@ -9,6 +9,7 @@ class KetQua extends CI_Controller {
 			return redirect(base_url('dang-nhap/'));
 		}
 		$this->load->model('Student/Model_KetQua');
+		$this->load->model('Student/Model_BaiThi');
 	}
 
 	public function index()
@@ -51,6 +52,15 @@ class KetQua extends CI_Controller {
 			$data['list'] = $this->Model_KetQua->getAll($start);
 			return $this->load->view('Student/View_XemKetQua', $data);
 		}
+	}
+
+	public function result($maketqua){
+		$mabaithi = $this->Model_KetQua->getById($maketqua)[0]['MaBaiThi'];
+		$data['title'] = "Đáp án Bài thi số ".$this->Model_BaiThi->getById($mabaithi)[0]['MaBaiThi'];
+		$data['detail'] = $this->Model_BaiThi->getById($mabaithi);
+		$data['cauhoi'] = $this->Model_BaiThi->getAllQuestion($mabaithi);
+		$data['maketqua'] = $maketqua;
+		return $this->load->view('Student/View_XemDapAn', $data);
 	}
 
 }

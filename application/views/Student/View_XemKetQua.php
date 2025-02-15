@@ -40,6 +40,7 @@
                       <th>Số Câu Hỏi</th>
                       <th>Số Câu Đúng</th>
                       <th>Chấm Điểm</th>
+                      <th>Hành Động</th>
                     </tr>
                   </thead>
                   <?php if(count($late) >= 1): ?>
@@ -77,6 +78,9 @@
 		                      <td>
 		                      	<?php echo $late[0]['ChamDiem'] == -1 ? "Chưa Chấm" : $late[0]['ChamDiem']. " Điểm"; ?> 
 		                      </td>
+		                      <td>
+		                      	<a href="<?php echo base_url('/xem-dap-an/'.$late[0]['MaKetQua']); ?>" class="btn btn-primary">Xem Đáp Án</a>
+		                      </td>
 		                    </tr>
 	                  </tbody>
 	                <?php endif ?>
@@ -105,6 +109,7 @@
                       <th>Số Câu Hỏi</th>
                       <th>Số Câu Đúng</th>
                       <th>Chấm Điểm</th>
+                      <th>Hành Động</th>
                     </tr>
                   </thead>
 	                  <tbody>
@@ -141,6 +146,9 @@
 		                      </td>
 		                      <td>
 		                      	<?php echo $value['ChamDiem'] == -1 ? "Chưa Chấm" : $value['ChamDiem']. " Điểm"; ?> 
+		                      </td>
+		                      <td>
+		                      	<a href="<?php echo base_url('/xem-dap-an/'.$value['MaKetQua']); ?>" class="btn btn-primary">Xem Đáp Án</a>
 		                      </td>
 		                    </tr>
 		                  <?php endforeach ?>
