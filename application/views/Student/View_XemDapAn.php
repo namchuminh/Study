@@ -36,34 +36,42 @@
 					            <dt>Câu <?php echo $key + 1 ?>: <?php echo $value['TenCauHoi'] ?></dt>
 					            <dd></dd>
 					            <dd>
-					            	<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,A" name="<?php echo $value['MaCauHoi'] ?>"
-					            	<?php echo $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['DapAnChon'] == "A" ? "checked" : "disabled" ?>
-					            	>
-						            A. <?php echo $value['A'] ?>
-					            </dd>
-					            <dd>
-					            	<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,B" name="<?php echo $value['MaCauHoi'] ?>"
-					            	<?php echo $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['DapAnChon'] == "B" ? "checked" : "disabled" ?>
-					            	>
-					            	B. <?php echo $value['B'] ?>
-					            </dd>
-					            <dd>
-					            	<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,C" name="<?php echo $value['MaCauHoi'] ?>"
-					            	<?php echo $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['DapAnChon'] == "C" ? "checked" : "disabled" ?>
-					            	>
-						            C. <?php echo $value['C'] ?>
-					            </dd>
-					            <dd>
-					            	<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,D" name="<?php echo $value['MaCauHoi'] ?>"
-					            		<?php echo $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['DapAnChon'] == "D" ? "checked" : "disabled" ?>
-					            	>
-						            D. <?php echo $value['D'] ?>
-					            </dd>
+									<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,A" name="<?php echo $value['MaCauHoi'] ?>"
+										<?php echo (count($this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])) > 0 && $this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])[0]['DapAnChon'] == "A") ? "checked" : "disabled"; ?>
+									>
+									A. <?php echo $value['A'] ?>
+								</dd>
+
+								<dd>
+									<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,B" name="<?php echo $value['MaCauHoi'] ?>"
+										<?php echo (count($this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])) > 0 && $this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])[0]['DapAnChon'] == "B") ? "checked" : "disabled"; ?>
+									>
+									B. <?php echo $value['B'] ?>
+								</dd>
+
+								<dd>
+									<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,C" name="<?php echo $value['MaCauHoi'] ?>"
+										<?php echo (count($this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])) > 0 && $this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])[0]['DapAnChon'] == "C") ? "checked" : "disabled"; ?>
+									>
+									C. <?php echo $value['C'] ?>
+								</dd>
+
+								<dd>
+									<input class="form-check-input" type="radio" value="<?php echo $value['MaCauHoi'] ?>,D" name="<?php echo $value['MaCauHoi'] ?>"
+										<?php echo (count($this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])) > 0 && $this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])[0]['DapAnChon'] == "D") ? "checked" : "disabled"; ?>
+									>
+									D. <?php echo $value['D'] ?>
+								</dd>
+
 					        </dl>
 					        <hr>
 					        <span>
-					        	<?php if($this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['TrangThai'] == "Sai"){ ?>
-					        		<i>Sai, Đáp án đúng: <b><?php echo $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['DapAnDung']; ?></b></i>
+					        	<?php if(count($this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])) <= 0 || $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['TrangThai'] == "Sai"){ ?>
+					        		<?php if(count($this->Model_BaiThi->checkTraLoi($maketqua, $value['MaCauHoi'])) <= 0){ ?>
+										<i>Sai, Chưa chọn đáp án</i>
+									<?php }else{ ?>
+										<i>Sai, Đáp án đúng: <b><?php echo $this->Model_BaiThi->checkTraLoi($maketqua,$value['MaCauHoi'])[0]['DapAnDung']; ?></b></i>
+									<?php } ?>
 					        	<?php }else{ ?>
 					        		<i>Đúng</i>
 					        	<?php } ?>
