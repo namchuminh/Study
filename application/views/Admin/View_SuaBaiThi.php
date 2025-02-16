@@ -53,11 +53,9 @@
                     <div class="form-group">
                       <label for="ten">Mức Độ Bài Thi</label>
                       <select name="mucdo" class="form-control" required>
-                        <option value="1" <?php echo $detail[0]['MucDo'] == 1 ? "selected" : ""; ?>>Nhận Biết</option>
-                        <option value="2" <?php echo $detail[0]['MucDo'] == 2 ? "selected" : ""; ?>>Thông Hiểu</option>
-                        <option value="3" <?php echo $detail[0]['MucDo'] == 3 ? "selected" : ""; ?>>Vận Dụng</option>
-                        <option value="4" <?php echo $detail[0]['MucDo'] == 4 ? "selected" : ""; ?>>Vận Dụng Cao</option>
-                        <option value="5" <?php echo $detail[0]['MucDo'] == 5 ? "selected" : ""; ?>>Đẩy Đủ Mức Độ</option>
+                        <option value="1" <?php echo $detail[0]['MucDo'] == 1 ? "selected" : ""; ?>>Dễ</option>
+                        <option value="2" <?php echo $detail[0]['MucDo'] == 2 ? "selected" : ""; ?>>Trung Bình</option>
+                        <option value="3" <?php echo $detail[0]['MucDo'] == 3 ? "selected" : ""; ?>>Khó</option>
                       </select>
                     </div>
                   </div>

@@ -14,6 +14,18 @@ class BaiThi extends CI_Controller {
 
 	public function index()
 	{
+		if(isset($_GET['mucdo'])){
+			$mucdo = $_GET['mucdo'];
+			$totalRecords = $this->Model_BaiThi->checkNumberMucDo($mucdo);
+			$recordsPerPage = 12;
+			$totalPages = ceil($totalRecords / $recordsPerPage); 
+
+			$data['totalPages'] = $totalPages;
+			$data['list'] = $this->Model_BaiThi->getAllMucDo($mucdo);
+			$data['title'] = "Danh sách bài thi";
+			return $this->load->view('Student/View_BaiThi', $data);
+		}
+
 		$totalRecords = $this->Model_BaiThi->checkNumber();
 		$recordsPerPage = 12;
 		$totalPages = ceil($totalRecords / $recordsPerPage); 
@@ -26,6 +38,36 @@ class BaiThi extends CI_Controller {
 
 	public function page($trang){
 		$data['title'] = "Danh sách bài thi";
+
+		if(isset($_GET['mucdo'])){
+			$mucdo = $_GET['mucdo'];
+			$totalRecords = $this->Model_BaiThi->checkNumberMucDo($mucdo);
+			$recordsPerPage = 12;
+			$totalPages = ceil($totalRecords / $recordsPerPage); 
+
+			if($trang < 1){
+				return redirect(base_url('bai-thi/'));
+			}
+
+			if($trang > $totalPages){
+				return redirect(base_url('bai-thi/'));
+			}
+
+			$start = ($trang - 1) * $recordsPerPage;
+
+
+			if($start == 0){
+				$data['totalPages'] = $totalPages;
+				$data['list'] = $this->Model_BaiThi->getAllMucDo($mucdo);
+				return $this->load->view('Student/View_BaiThi', $data);
+			}else{
+				$data['totalPages'] = $totalPages;
+				$data['list'] = $this->Model_BaiThi->getAllMucDo($mucdo, $start);
+				return $this->load->view('Student/View_BaiThi', $data);
+			}
+		}
+
+
 		$totalRecords = $this->Model_BaiThi->checkNumber();
 		$recordsPerPage = 12;
 		$totalPages = ceil($totalRecords / $recordsPerPage); 

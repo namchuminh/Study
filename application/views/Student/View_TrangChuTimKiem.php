@@ -109,15 +109,11 @@
 			                  <dt>Mức Độ</dt>
 			                  <dd>
 			                  	<?php if($value['MucDo'] == 1){ ?>
-		                            Nhận Biết
+		                            Dễ 
 		                        <?php }else if($value['MucDo'] == 2){ ?>
-		                            Thông Hiểu
+		                            Trung Bình
 		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                            Vận Dụng
-		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                        		Vận Dụng Cao
-		                        <?php }else{ ?>
-		                            Đầy Đủ Mức Độ
+		                            Khó
 		                        <?php } ?>
 			                  </dd>
 			                  <dt>Thời Gian Làm</dt>

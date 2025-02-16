@@ -33,7 +33,7 @@
                       <th>Tên Bài Thi</th>
                       <th>Loại Trình Độ</th>
                       <th>Loại Bài Thi</th>
-                      <th>Mức Độ Bài Thi</th>
+                      <th class="text-center">Mức Độ Bài Thi</th>
                       <th>Số Câu Hỏi</th>
                       <th>Thời Gian Làm</th>
                       <th>Thêm Câu Hỏi</th>
@@ -51,17 +51,13 @@
                           <a href="<?php echo base_url('bai-thi/'.$value['DuongDan'].'/'); ?>" target="_blank"><?php echo $value['TenTrinhDo']; ?></a>
                         </td>
                         <td><?php echo $value['LoaiBaiThi'] == 1 ? "Trắc Nghiệm" : "Tự Luận"; ?></td>
-                        <td>
+                        <td class="text-center">
                           <?php if($value['MucDo'] == 1){ ?>
-                            Nhận Biết
+                            Dễ
                           <?php }else if($value['MucDo'] == 2){ ?>
-                            Thông Hiểu
+                            Trung Bình
                           <?php }else if($value['MucDo'] == 3){ ?>
-                            Vận Dụng
-                          <?php }else if($value['MucDo'] == 4){ ?>
-                            Vận Dụng Cao
-                          <?php }else{ ?>
-                            Đẩy Đủ Mức Độ
+                            Khó
                           <?php } ?>
                         </td>
                         <td>

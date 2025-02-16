@@ -50,15 +50,11 @@
 			                  <dt>Mức Độ</dt>
 			                  <dd>
 			                  		<?php if($value['MucDo'] == 1){ ?>
-		                            Nhận Biết
+		                            Dễ 
 		                        <?php }else if($value['MucDo'] == 2){ ?>
-		                            Thông Hiểu
+		                            Trung Bình
 		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                            Vận Dụng
-		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                        		Vận Dụng Cao
-		                        <?php }else{ ?>
-		                            Đầy Đủ Mức Độ
+		                            Khó
 		                        <?php } ?>
 			                  </dd>
 			                  <dt>Thời Gian Làm</dt>
@@ -76,13 +72,24 @@
 			          </div>
             	<?php endforeach ?>
 						</div>
-						<div class="card-footer clearfix bg-default">
+
+						<?php if(isset($_GET['mucdo'])){ ?>
+							<div class="card-footer clearfix bg-default">
+	                <ul class="pagination pagination-sm m-0 justify-content-center">
+	                	<?php for($i = 1; $i <= $totalPages; $i++){ ?>
+	                  		<li class="page-item"><a class="page-link" href="<?php echo base_url('bai-thi/'.$i.'/trang/?mucdo='.$_GET['mucdo']) ?>"><?php echo $i; ?></a></li>
+	                  	<?php } ?>      
+	                </ul>
+	            </div>
+						<?php }else{ ?>
+							<div class="card-footer clearfix bg-default">
                 <ul class="pagination pagination-sm m-0 justify-content-center">
                 	<?php for($i = 1; $i <= $totalPages; $i++){ ?>
                   		<li class="page-item"><a class="page-link" href="<?php echo base_url('bai-thi/'.$i.'/trang/') ?>"><?php echo $i; ?></a></li>
                   	<?php } ?>      
                 </ul>
-              </div>
+            	</div>
+						<?php } ?>
           </div>
 
         </div>

@@ -46,6 +46,19 @@ class Model_BaiThi extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function checkNumberMucDo($mucdo)
+	{
+		$sql = "SELECT baithi.*, trinhdo.TenTrinhDo, trinhdo.DuongDan FROM baithi, trinhdo WHERE baithi.TrangThai = 1 AND trinhdo.MaTrinhDo = baithi.MaTrinhDo AND baithi.MucDo = ?";
+		$result = $this->db->query($sql, array($mucdo));
+		return $result->num_rows();
+	}
+
+	public function getAllMucDo($mucdo, $start = 0, $end = 12){
+		$sql = "SELECT baithi.*, trinhdo.TenTrinhDo, trinhdo.DuongDan FROM baithi, trinhdo WHERE baithi.TrangThai = 1 AND trinhdo.MaTrinhDo = baithi.MaTrinhDo AND baithi.MucDo = ? ORDER BY baithi.Mabaithi DESC LIMIT ?, ?";
+		$result = $this->db->query($sql, array($mucdo, $start, $end));
+		return $result->result_array();
+	}
+
 	public function getById($Mabaithi){
 		$sql = "SELECT * FROM baithi WHERE Mabaithi = ? AND TrangThai = 1";
 		$result = $this->db->query($sql, array($Mabaithi));

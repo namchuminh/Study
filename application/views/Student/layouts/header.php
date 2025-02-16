@@ -117,11 +117,38 @@
           <li class="nav-header">LÀM BÀI THI</li>
           <li class="nav-item has-treeview">
             <a href="<?php echo base_url('bai-thi/'); ?>" class="nav-link">
-              <i class="nav-icon fa-solid fa-signs-post"></i>
+              <i class="nav-icon fa-solid fa-book-open"></i>
               <p>
                 Chọn Bài Thi
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url('bai-thi/?mucdo=1'); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mức Dễ</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url('bai-thi/?mucdo=2'); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mức Trung Bình</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url('bai-thi/?mucdo=3'); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mức Khó</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url('bai-thi/'); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Toàn Bộ</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="<?php echo base_url('xem-ket-qua/'); ?>" class="nav-link">
