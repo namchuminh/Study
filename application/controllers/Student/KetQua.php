@@ -14,6 +14,22 @@ class KetQua extends CI_Controller {
 
 	public function index()
 	{
+		if($this->input->get('mabaithi') || $this->input->get('ngaythi')){
+			$mahocsinh = $this->session->userdata('mahocsinh');
+
+			$mabaithi = empty($this->input->get('mabaithi')) ? -1 : $this->input->get('mabaithi');
+			$ngaythi = $this->input->get('ngaythi');
+			$totalRecords = $this->Model_KetQua->checkNumberSearch($mahocsinh,$mabaithi,$ngaythi);
+			$recordsPerPage = 20;
+			$totalPages = ceil($totalRecords / $recordsPerPage); 
+
+			$data['totalPages'] = $totalPages;
+			$data['list'] = $this->Model_KetQua->getAllSearch($mahocsinh,$mabaithi,$ngaythi);
+			$data['title'] = "Danh sách kết quả thi";
+			$data['late'] = $this->Model_KetQua->getLate();
+			return $this->load->view('Student/View_XemKetQua', $data);
+		}
+
 		$totalRecords = $this->Model_KetQua->checkNumber();
 		$recordsPerPage = 20;
 		$totalPages = ceil($totalRecords / $recordsPerPage); 

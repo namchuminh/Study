@@ -15,6 +15,22 @@ class KetQua extends CI_Controller {
 
 	public function index()
 	{
+		//Tìm kiếm theo get tenhocsinh và get ngaythi có phân trang 20 kết quả 1 trang
+		if($this->input->get('tenhocsinh') || $this->input->get('ngaythi')){
+			$tenhocsinh = empty($this->input->get('tenhocsinh')) ? '@!#$%^&*()' : $this->input->get('tenhocsinh');
+			$ngaythi = $this->input->get('ngaythi');
+			$totalRecords = $this->Model_KetQua->checkNumberSearch($tenhocsinh,$ngaythi);
+			$recordsPerPage = 20;
+			$totalPages = ceil($totalRecords / $recordsPerPage); 
+
+			$data['totalPages'] = $totalPages;
+			$data['list'] = $this->Model_KetQua->getAllSearch($tenhocsinh,$ngaythi);
+			$data['chuacham'] = $this->Model_KetQua->getChuaCham();
+			$data['title'] = "Danh sách kết quả thi";
+			return $this->load->view('Admin/View_KetQua', $data);
+		}
+		
+
 		$totalRecords = $this->Model_KetQua->checkNumber();
 		$recordsPerPage = 20;
 		$totalPages = ceil($totalRecords / $recordsPerPage); 
@@ -27,6 +43,39 @@ class KetQua extends CI_Controller {
 	}
 
 	public function page($trang){
+		if($this->input->get('tenhocsinh') || $this->input->get('ngaythi')){
+			$tenhocsinh = empty($this->input->get('tenhocsinh')) ? '@!#$%^&*()' : $this->input->get('tenhocsinh');
+			$ngaythi = $this->input->get('ngaythi');
+			
+			$data['title'] = "Danh sách kết quả thi";
+			$data['chuacham'] = $this->Model_KetQua->getChuaCham();
+			$totalRecords = $this->Model_KetQua->checkNumberSearch($tenhocsinh,$ngaythi);
+			$recordsPerPage = 20;
+			$totalPages = ceil($totalRecords / $recordsPerPage); 
+
+			if($trang < 1){
+				return redirect(base_url('admin/ket-qua/'));
+			}
+
+			if($trang > $totalPages){
+				return redirect(base_url('admin/ket-qua/'));
+			}
+
+			$start = ($trang - 1) * $recordsPerPage;
+
+
+			if($start == 0){
+				$data['totalPages'] = $totalPages;
+				$data['list'] = $this->Model_KetQua->getAllSearch($tenhocsinh,$ngaythi);
+				return $this->load->view('Admin/View_KetQua', $data);
+			}else{
+				$data['totalPages'] = $totalPages;
+				$data['list'] = $this->Model_KetQua->getAllSearch($tenhocsinh,$ngaythi,$start);
+				return $this->load->view('Admin/View_KetQua', $data);
+			}
+		}
+
+
 		$data['title'] = "Danh sách kết quả thi";
 		$data['chuacham'] = $this->Model_KetQua->getChuaCham();
 		$totalRecords = $this->Model_KetQua->checkNumber();

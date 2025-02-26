@@ -69,7 +69,7 @@
                           </select>
                         </div>
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-12 d-none">
                         <div class="form-group">
                           <label for="ten">Loại Bài Học</label>
                           <select name="loaibaihoc" class="form-control" disabled>

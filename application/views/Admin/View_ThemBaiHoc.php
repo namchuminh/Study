@@ -78,12 +78,8 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label for="ten">Loại Bài Học</label>
-                          <select name="loaibaihoc" class="form-control" required>
+                          <select name="loaibaihoc" class="form-control d-none" required>
                             <option value="1" selected>Bài Học SGK</option>
-                            <option value="2">Bài Học Cơ Bản</option>
-                            <option value="3">Bài Học Nâng Cao</option>
-                            <option value="4">Bài Học Luyện Thi</option>
                           </select>
                         </div>
                       </div>

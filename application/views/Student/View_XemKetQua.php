@@ -57,17 +57,13 @@
 	                        	<?php echo $late[0]['LoaiBaiThi'] == 1 ? "Trắc Nghiệm" : "Tự Luận" ?>
 	                        </td>
 		                      <td>
-		                      	<?php if($late[0]['MucDo'] == 1){ ?>
-		                            Nhận Biết
-		                        <?php }else if($late[0]['MucDo'] == 2){ ?>
-		                            Thông Hiểu
-		                        <?php }else if($late[0]['MucDo'] == 3){ ?>
-		                            Vận Dụng
-		                        <?php }else if($late[0]['MucDo'] == 3){ ?>
-		                        		Vận Dụng Cao
-		                        <?php }else{ ?>
-		                            Đầy Đủ Mức Độ
-		                        <?php } ?>
+							  <?php if($late[0]['MucDo'] == 1){ ?>
+			                            Dễ
+			                        <?php }else if($late[0]['MucDo'] == 2){ ?>
+			                            Trung Bình
+			                        <?php }else if($late[0]['MucDo'] == 3){ ?>
+			                            Khó
+			                        <?php } ?>
 		                      </td>
 		                      <td>
 		                      	<?php echo $late[0]['SoCauHoi'] ?> Câu
@@ -96,6 +92,17 @@
             <div class="card">
             	<div class="card-header">
             		<h5>Tất Cả Kết Quả Thi</h5>
+					<form class="row"> 
+						<div class="col-sm-2">
+							<input type="text" name="mabaithi" class="form-control" placeholder="Mã Đề Thi">
+						</div>
+						<div class="col-sm-2">
+							<input type="date" name="ngaythi" class="form-control">
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+						</div>
+					</form>
             	</div>
             	<div class="card-body table-responsive p-0">
                 <table class="table table-hover">
@@ -126,17 +133,13 @@
 	                        	<?php echo $value['LoaiBaiThi'] == 1 ? "Trắc Nghiệm" : "Tự Luận" ?>
 	                        </td>
 		                      <td>
-		                      	<?php if($value['MucDo'] == 1){ ?>
-		                            Nhận Biết
-		                        <?php }else if($value['MucDo'] == 2){ ?>
-		                            Thông Hiểu
-		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                            Vận Dụng
-		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                        		Vận Dụng Cao
-		                        <?php }else{ ?>
-		                            Đầy Đủ Mức Độ
-		                        <?php } ?>
+							  <?php if($value['MucDo'] == 1){ ?>
+			                            Dễ
+			                        <?php }else if($value['MucDo'] == 2){ ?>
+			                            Trung Bình
+			                        <?php }else if($value['MucDo'] == 3){ ?>
+			                            Khó
+			                        <?php } ?>
 		                      </td>
 		                      <td>
 		                      	<?php echo $value['SoCauHoi'] ?> Câu

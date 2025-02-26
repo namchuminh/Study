@@ -9,6 +9,8 @@ $route['admin/dang-nhap'] = 'Admin/DangNhap/index';
 $route['admin/dang-xuat'] = 'Admin/DangXuat';
 
 $route['admin'] = 'Admin/TrangChu';
+$route['admin/luot-hoc'] = 'Admin/TrangChu/sumView';
+$route['admin/diem-trung-binh'] = 'Admin/TrangChu/avgResult';
 
 $route['admin/trinh-do'] = 'Admin/TrinhDo';
 $route['admin/trinh-do/(:any)/trang'] = 'Admin/TrinhDo/page/$1';
@@ -61,4 +63,5 @@ $route['ca-nhan'] = 'Student/HocSinh';
 $route['xem-ket-qua'] = 'Student/KetQua/index';
 $route['xem-ket-qua/(:any)/trang'] = 'Student/KetQua/page/$1';
 $route['xem-dap-an/(:any)'] = 'Student/KetQua/result/$1';
+
 

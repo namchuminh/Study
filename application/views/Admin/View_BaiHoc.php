@@ -33,6 +33,7 @@
                       <th style="width: 250px;">Tên Bài Học</th>
                       <th style="width: 150px;">Loại Trình Độ</th>
                       <th>Loại Bài Học</th>
+                      <th class="text-center">Số Lượt Học</th>
                       <th style="width: 250px;">Đường Dẫn</th>
                       <th>Hành Động</th>
                     </tr>
@@ -57,6 +58,9 @@
                           <?php }else{ ?>
                             Bài Học Luyện Thi
                           <?php } ?>
+                        </td>
+                        <td class="text-center">
+                          <?php echo $this->Model_BaiHoc->checkViewCount($value['MaBaiHoc']); ?>
                         </td>
                         <td>
                           <a href="<?php echo base_url('bai-hoc/'.$value['DuongDan'].'/'); ?>" target="_blank"><?php echo $value['DuongDan']; ?></a>

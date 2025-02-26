@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2025 at 07:15 PM
+-- Generation Time: Feb 26, 2025 at 11:33 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -73,12 +73,12 @@ CREATE TABLE `baithi` (
 --
 
 INSERT INTO `baithi` (`MaBaiThi`, `MaTrinhDo`, `LoaiBaiThi`, `MucDo`, `SoCauHoi`, `ThoiGianLam`, `TrangThai`) VALUES
-(1, 1, 1, 5, 2, 1, 1),
-(2, 5, 2, 5, 5, 1, 1),
-(3, 2, 2, 5, 2, 60, 1),
-(4, 1, 1, 5, 3, 60, 1),
+(1, 1, 1, 1, 2, 1, 1),
+(2, 5, 2, 1, 5, 1, 1),
+(3, 2, 2, 1, 2, 60, 1),
+(4, 1, 1, 1, 3, 60, 1),
 (5, 1, 2, 3, 3, 60, 1),
-(6, 1, 2, 5, 2, 10, 1),
+(6, 1, 2, 2, 2, 10, 1),
 (7, 4, 2, 1, 50, 90, 1);
 
 -- --------------------------------------------------------
@@ -211,7 +211,12 @@ INSERT INTO `ketqua` (`MaKetQua`, `MaHocSinh`, `SoCauDung`, `ChamDiem`, `ThoiGia
 (107, 1, 2, 6.66667, '2025-02-16 00:24:41', 4, 1),
 (108, 1, 0, 0, '2025-02-16 00:25:54', 1, 1),
 (109, 1, 1, 5, '2025-02-16 00:49:00', 1, 1),
-(110, 1, 0, 0, '2025-02-16 00:49:23', 1, 1);
+(110, 1, 0, 0, '2025-02-16 00:49:23', 1, 1),
+(111, 1, 1, 3.33333, '2025-02-16 01:17:28', 4, 1),
+(112, 1, 0, 0, '2025-02-16 01:19:01', 5, 1),
+(113, 1, 1, 3.33333, '2025-02-16 01:19:12', 4, 1),
+(114, 1, 0, 0, '2025-02-16 14:22:54', 7, 1),
+(115, 1, 0, 0, '2025-02-16 14:33:00', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -236,7 +241,16 @@ INSERT INTO `traloi` (`MaTraLoi`, `MaKetQua`, `MaCauHoi`, `DapAnDung`, `DapAnCho
 (1, 109, 5, 'B', 'B', 'Đúng'),
 (2, 109, 6, 'C', 'B', 'Sai'),
 (3, 110, 5, 'B', 'C', 'Sai'),
-(4, 110, 6, 'C', 'D', 'Sai');
+(4, 110, 6, 'C', 'D', 'Sai'),
+(5, 111, 12, 'B', 'A', 'Sai'),
+(6, 111, 13, 'C', 'C', 'Đúng'),
+(7, 111, 14, 'A', 'D', 'Sai'),
+(8, 113, 12, 'B', 'A', 'Sai'),
+(9, 113, 13, 'C', 'C', 'Đúng'),
+(10, 113, 14, 'A', 'D', 'Sai'),
+(11, 115, 13, 'C', 'B', 'Sai'),
+(12, 115, 12, 'B', 'D', 'Sai'),
+(13, 115, 14, 'A', 'C', 'Sai');
 
 -- --------------------------------------------------------
 
@@ -288,6 +302,25 @@ INSERT INTO `tuluan` (`MaTuLuan`, `MaKetQua`, `MaCauHoi`, `BaiLam`) VALUES
 (16, 101, 15, '<p>ab</p>'),
 (17, 101, 16, '<p>a</p>'),
 (18, 101, 17, '<p>r</p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xembaihoc`
+--
+
+CREATE TABLE `xembaihoc` (
+  `MaXemBaiHoc` int(11) NOT NULL,
+  `MaBaiHoc` int(11) NOT NULL,
+  `ThoiGian` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `xembaihoc`
+--
+
+INSERT INTO `xembaihoc` (`MaXemBaiHoc`, `MaBaiHoc`, `ThoiGian`) VALUES
+(1, 5, '2025-02-26');
 
 --
 -- Indexes for dumped tables
@@ -358,6 +391,13 @@ ALTER TABLE `tuluan`
   ADD KEY `MaCauHoi` (`MaCauHoi`);
 
 --
+-- Indexes for table `xembaihoc`
+--
+ALTER TABLE `xembaihoc`
+  ADD PRIMARY KEY (`MaXemBaiHoc`),
+  ADD KEY `MaBaiHoc` (`MaBaiHoc`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -395,13 +435,13 @@ ALTER TABLE `hocsinh`
 -- AUTO_INCREMENT for table `ketqua`
 --
 ALTER TABLE `ketqua`
-  MODIFY `MaKetQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `MaKetQua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `traloi`
 --
 ALTER TABLE `traloi`
-  MODIFY `MaTraLoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `MaTraLoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `trinhdo`
@@ -414,6 +454,12 @@ ALTER TABLE `trinhdo`
 --
 ALTER TABLE `tuluan`
   MODIFY `MaTuLuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `xembaihoc`
+--
+ALTER TABLE `xembaihoc`
+  MODIFY `MaXemBaiHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -458,6 +504,12 @@ ALTER TABLE `traloi`
 ALTER TABLE `tuluan`
   ADD CONSTRAINT `tuluan_ibfk_1` FOREIGN KEY (`MaKetQua`) REFERENCES `ketqua` (`MaKetQua`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `tuluan_ibfk_2` FOREIGN KEY (`MaCauHoi`) REFERENCES `cauhoi` (`MaCauHoi`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `xembaihoc`
+--
+ALTER TABLE `xembaihoc`
+  ADD CONSTRAINT `xembaihoc_ibfk_1` FOREIGN KEY (`MaBaiHoc`) REFERENCES `baihoc` (`MaBaiHoc`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

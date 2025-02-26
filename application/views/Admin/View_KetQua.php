@@ -59,15 +59,11 @@
 		                        </td>
 			                      <td>
 			                      	<?php if($value['MucDo'] == 1){ ?>
-			                            Nhận Biết
+			                            Dễ
 			                        <?php }else if($value['MucDo'] == 2){ ?>
-			                            Thông Hiểu
+			                            Trung Bình
 			                        <?php }else if($value['MucDo'] == 3){ ?>
-			                            Vận Dụng
-			                        <?php }else if($value['MucDo'] == 3){ ?>
-			                        		Vận Dụng Cao
-			                        <?php }else{ ?>
-			                            Đầy Đủ Mức Độ
+			                            Khó
 			                        <?php } ?>
 			                      </td>
 			                      <td>
@@ -91,6 +87,18 @@
             <div class="card">
             	<div class="card-header">
             		<h5>Đã Chấm Điểm</h5>
+					<!-- Tạo form tìm kiếm -->
+					<form class="row"> 
+						<div class="col-sm-2">
+							<input type="text" name="tenhocsinh" class="form-control" placeholder="Tên học sinh">
+						</div>
+						<div class="col-sm-2">
+							<input type="date" name="ngaythi" class="form-control">
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+						</div>
+					</form>
             	</div>
             	<div class="card-body table-responsive p-0">
                 <table class="table table-hover">
@@ -129,17 +137,13 @@
 	                        	<?php echo $value['LoaiBaiThi'] == 1 ? "Trắc Nghiệm" : "Tự Luận" ?>
 	                        </td>
 		                      <td>
-		                      	<?php if($value['MucDo'] == 1){ ?>
-		                            Nhận Biết
-		                        <?php }else if($value['MucDo'] == 2){ ?>
-		                            Thông Hiểu
-		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                            Vận Dụng
-		                        <?php }else if($value['MucDo'] == 3){ ?>
-		                        		Vận Dụng Cao
-		                        <?php }else{ ?>
-		                            Đầy Đủ Mức Độ
-		                        <?php } ?>
+							  <?php if($value['MucDo'] == 1){ ?>
+			                            Dễ
+			                        <?php }else if($value['MucDo'] == 2){ ?>
+			                            Trung Bình
+			                        <?php }else if($value['MucDo'] == 3){ ?>
+			                            Khó
+			                        <?php } ?>
 		                      </td>
 		                      <td>
 		                      	<?php echo $value['SoCauHoi'] ?> Câu
@@ -162,11 +166,20 @@
                 <?php endif ?>
               </div>
               <div class="card-footer clearfix bg-default">
-                <ul class="pagination pagination-sm m-0 float-right">
-                	<?php for($i = 1; $i <= $totalPages; $i++){ ?>
-                  		<li class="page-item"><a class="page-link" href="<?php echo base_url('admin/ket-qua/'.$i.'/trang/') ?>"><?php echo $i; ?></a></li>
-                  	<?php } ?>      
-                </ul>
+				<!-- Nếu tồn tại get tenhocsinh hoặc ngaythi thì truyền thêm tham số này vào phân trang -->
+				<?php if(isset($_GET['tenhocsinh']) || isset($_GET['ngaythi'])){ ?>
+					<ul class="pagination pagination-sm m-0 float-right">
+						<?php for($i = 1; $i <= $totalPages; $i++){ ?>
+							<li class="page-item"><a class="page-link" href="<?php echo base_url('admin/ket-qua/'.$i.'/trang/?tenhocsinh='.$_GET['tenhocsinh'].'&ngaythi='.$_GET['ngaythi']) ?>"><?php echo $i; ?></a></li>
+						<?php } ?>      
+					</ul>
+				<?php }else{ ?>
+					<ul class="pagination pagination-sm m-0 float-right">
+						<?php for($i = 1; $i <= $totalPages; $i++){ ?>
+							<li class="page-item"><a class="page-link" href="<?php echo base_url('admin/ket-qua/'.$i.'/trang/') ?>"><?php echo $i; ?></a></li>
+						<?php } ?>      
+					</ul>
+				<?php } ?>
               </div>
             </div>
           </div>

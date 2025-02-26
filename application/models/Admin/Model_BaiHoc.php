@@ -27,6 +27,13 @@ class Model_BaiHoc extends CI_Model {
 	    return $lastInsertedId;
 	}
 
+	public function checkViewCount($mabaihoc)
+	{
+		$sql = "SELECT * FROM xembaihoc WHERE MaBaiHoc = ?";
+		$result = $this->db->query($sql, array($mabaihoc));
+		return $result->num_rows();
+	}
+
 	public function checkNumber()
 	{
 		$sql = "SELECT baihoc.*, trinhdo.TenTrinhDo, trinhdo.DuongDan AS DuongDanTD FROM baihoc, trinhdo WHERE baihoc.TrangThai = 1 AND baihoc.MaTrinhDo = trinhdo.MaTrinhDo";

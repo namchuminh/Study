@@ -83,12 +83,8 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label for="ten">Loại Bài Học</label>
-                          <select name="loaibaihoc" class="form-control" required>
+                          <select name="loaibaihoc" class="form-control d-none" required>
                             <option value="1" <?php echo $detail[0]['LoaiBaiHoc'] == 1 ? "selected" : ""; ?>>Bài Học SGK</option>
-                            <option value="2" <?php echo $detail[0]['LoaiBaiHoc'] == 2 ? "selected" : ""; ?>>Bài Học Cơ Bản</option>
-                            <option value="3" <?php echo $detail[0]['LoaiBaiHoc'] == 3 ? "selected" : ""; ?>>Bài Học Nâng Cao</option>
-                            <option value="4" <?php echo $detail[0]['LoaiBaiHoc'] == 4 ? "selected" : ""; ?>>Bài Học Luyện Thi</option>
                           </select>
                         </div>
                       </div>

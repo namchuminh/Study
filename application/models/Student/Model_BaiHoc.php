@@ -10,6 +10,17 @@ class Model_BaiHoc extends CI_Model {
 		
 	}
 
+	public function addView($mabaihoc){
+		$data = array(
+	        "MaBaiHoc" => $mabaihoc,
+	    );
+
+	    $this->db->insert('xembaihoc', $data);
+	    $lastInsertedId = $this->db->insert_id();
+
+	    return $lastInsertedId;
+	}
+
 	public function getAllHome(){
 		$sql = "SELECT baihoc.*, trinhdo.TenTrinhDo, trinhdo.DuongDan AS DuongDanTD, giaovien.TenGiaoVien FROM baihoc, trinhdo, giaovien WHERE baihoc.TrangThai = 1 AND baihoc.MaTrinhDo = trinhdo.MaTrinhDo AND giaovien.MaGiaoVien = baihoc.MaGiaoVien ORDER BY baihoc.mabaihoc DESC LIMIT 6";
 		$result = $this->db->query($sql);

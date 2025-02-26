@@ -58,6 +58,7 @@ class BaiHoc extends CI_Controller {
 		$data['title'] = $this->Model_BaiHoc->getBySlug($duongdan)[0]['TenBaiHoc'];
 		$data['detail'] = $this->Model_BaiHoc->getBySlug($duongdan);
 		$data['trinhdo'] = $this->Model_TrinhDo->getAll(0,1000);
+		$this->Model_BaiHoc->addView($data['detail'][0]['MaBaiHoc']);
 		return $this->load->view('Student/View_XemBaiHoc', $data);
 
 	}
